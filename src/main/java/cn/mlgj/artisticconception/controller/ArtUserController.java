@@ -72,6 +72,7 @@ public class ArtUserController {
 
 
     }
+    //登录
     @RequestMapping("artLogin")
     @ResponseBody
     public Object artLogin(@RequestParam("accountNo") String accountNo, @RequestParam("password") String password, HttpSession req){
