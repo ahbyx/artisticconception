@@ -1,59 +1,99 @@
-<!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Sign Up Login</title>
-    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
+    <link href="css/bootsnav.css" type="text/css" rel="stylesheet">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/bootsnav.js" type="text/javascript"></script>
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/regist.js" type="text/javascript"></script>
+    <!--[if IE]>
+    <script src="js/html5.js"></script><![endif]-->
+    <script src="js/login.js"></script><![endif]-->
+    <title>登录</title>
+    <style>
+        #btn_yzm{
+            background-color: #FFF;
+            border: 0px;
+            outline:none;
+        }
+        #btn_yzm:hover{
+            color: black;
+            font-size: 22px;
+        }
+    </style>
 </head>
 
-<body>
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-<body>
-<div class="cotn_principal">
-    <div class="cont_centrar">
-        <div class="cont_login">
-            <div class="cont_info_log_sign_up">
-                <div class="col_md_login">
-                    <div class="cont_ba_opcitiy">
-                        <h2>LOGIN</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur.</p>
-                        <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+<body class="logobg_style">
+<div id="large-header" class="large-header login-page">
+    <canvas id="demo-canvas" width="1590" height="711"></canvas>
+    <div class="login-form">
+        <div class="login-content">
+            <h1 class="title_name">账户登录</h1>
+            <form method="post" role="form" id="form_login" class="login_padding" >
+                <div class="form-group clearfix">
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="icon_user"></i>
+                        </div>
+
+                        <input type="text" class="form-control" name="username" id="accountNo" placeholder="用户名"
+                               autocomplete="off">
                     </div>
                 </div>
-                <div class="col_md_sign_up">
-                    <div class="cont_ba_opcitiy">
-                        <h2>SIGN UP</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur.</p>
-                        <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+                <div class="form-group clearfix">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="icon_password"></i>
+                        </div>
+
+                        <input type="password" class="form-control" name="password" id="password" placeholder="密码"
+                               autocomplete="off">
                     </div>
                 </div>
-            </div>
-            <div class="cont_back_info">
-                <div class="cont_img_back_grey"> <img src="img/po.jpg" alt="" /> </div>
-            </div>
-            <div class="cont_forms" >
-                <div class="cont_img_back_"> <img src="img/po.jpg" alt="" /> </div>
-                <div class="cont_form_login"> <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
-                    <h2>LOGIN</h2>
-                    <input type="text" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                <div class="form-group clearfix">
+                    <div class="input-group col-lg-8 col-md-8 col-xs-8">
+                        <div class="input-group-addon"><i class="icon_yanzhen"></i></div>
+                        <input type="text" class="form-control" name="yanzhengma" id="yanzhengma"
+                               placeholder="验证码" autocomplete="off">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-4 fl"><input type="button" id="btn_yzm" class="btn_mfyzm"></div>
                 </div>
-                <div class="cont_form_sign_up"> <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
-                    <h2>SIGN UP</h2>
-                    <input type="text" placeholder="Email" />
-                    <input type="text" placeholder="User" />
-                    <input type="password" placeholder="Password" />
-                    <input type="password" placeholder="Confirm Password" />
-                    <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+                <div class=" textright"><a href="#" class="forget">忘记密码？</a></div>
+                <div class="tishi"></div>
+                <div class="form-group">
+                    <a href="javascript:;" type="button" id="login" class="btn btn-danger btn-block btn-login"
+                       >
+                        <i class="fa fa-sign-in"></i>
+                        登录
+                    </a>
                 </div>
-            </div>
+                <div class=" textright"><a href="registered" class="forget">立即注册</a></div>
+                <!-- Implemented in v1.1.4 -->
+                <div class="form-group">
+
+                </div>
+
+
+            </form>
         </div>
+
     </div>
 </div>
-<script th:src="@{/js/login.js}"></script>
-</body>
 
+<script src="js/TweenLite/TweenLite.min.js"></script>
+<script src="js/TweenLite/EasePack.min.js"></script>
+<script src="js/TweenLite/rAF.js"></script>
+<script src="js/TweenLite/demo-1.js"></script>
+<script src="js/login.js"></script>
 </body>
 </html>
+

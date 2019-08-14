@@ -6,6 +6,8 @@ import cn.mlgj.artisticconception.service.IArtUserinfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * <p>
  *  服务实现类
@@ -17,4 +19,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ArtUserinfoServiceImpl extends ServiceImpl<ArtUserinfoMapper, ArtUserinfo> implements IArtUserinfoService {
 
+    @Resource
+    ArtUserinfoMapper artUserinfoMapper;
+
+    @Override
+    public int addUserInfo(Integer userId, String name) {
+        return artUserinfoMapper.addUserInfo(userId,name);
+    }
 }

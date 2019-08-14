@@ -2,15 +2,17 @@ package cn.mlgj.artisticconception.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author zjh
@@ -42,7 +44,7 @@ public class ArtUser implements Serializable {
     /**
      * 手机号
      */
-    private Integer phone;
+    private String phone;
 
     /**
      * 角色
@@ -62,7 +64,7 @@ public class ArtUser implements Serializable {
     public ArtUser() {
     }
 
-    public ArtUser(Integer id, String accountNo, String password, Integer phone, Integer role, LocalDateTime lastLogintime, String status) {
+    public ArtUser(Integer id, String accountNo, String password, String phone, Integer role, LocalDateTime lastLogintime, String status) {
         this.id = id;
         this.accountNo = accountNo;
         this.password = password;
@@ -96,11 +98,11 @@ public class ArtUser implements Serializable {
         this.password = password;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

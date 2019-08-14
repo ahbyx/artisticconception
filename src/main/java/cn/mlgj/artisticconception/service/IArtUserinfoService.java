@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-08-07
  */
 public interface IArtUserinfoService extends IService<ArtUserinfo> {
-
+    int addUserInfo(Integer userId,String name);
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th= xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Aha Magazine | Home</title>
 
@@ -24,7 +24,26 @@
 
   <!-- Lazyload -->
   <script th:src="@{/js/lazysizes.min.js}"></script>
-
+  <style>
+      .a_zhang{
+        color: rgb(140,149,152);
+      }
+      .a_zhang:hover{
+        color: #FFF;
+      }
+    .a_yu{
+      height: 40px;
+      line-height: 40px;
+    }
+    .div_zhang{
+      background-color:#FFF;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      float: right;
+      margin-left: 15px;
+    }
+  </style>
 </head>
 
 <body class="bg-light">
@@ -202,45 +221,58 @@
               </ul> <!-- end menu -->
             </nav> <!-- end nav-wrap -->
 
+<!--            注册链接-->
+            <div>
+              <div>
+                <a th:text="${session.artUser.accountNo}"></a>
+                <a href="login" class="a_zhang a_yu">登录</a>
+                <a href="registered" class="a_zhang">注册</a>
+              </div>
+<!--              <div>-->
+<!--                <a href="login" class="a_zhang a_yu">张宇</a>-->
+<!--                <div class="div_zhang"></div>-->
+<!--              </div>-->
+            </div>
+
             <!-- Nav Right -->
-            <div class="nav__right nav--align-right d-lg-flex">
+<!--            <div class="nav__right nav&#45;&#45;align-right d-lg-flex">-->
 
-              <!-- Socials -->
-              <div class="nav__right-item socials nav__socials d-none d-lg-flex"> 
-                <a class="social social-facebook social--nobase" href="#" target="_blank" aria-label="facebook">
-                  <i class="ui-facebook"></i>
-                </a>
-                <a class="social social-twitter social--nobase" href="#" target="_blank" aria-label="twitter">
-                  <i class="ui-twitter"></i>
-                </a>
-                <a class="social social-google social--nobase" href="#" target="_blank" aria-label="google">
-                  <i class="ui-google"></i>
-                </a>
-                <a class="social social-youtube social--nobase" href="#" target="_blank" aria-label="youtube">
-                  <i class="ui-youtube"></i>
-                </a>
-                <a class="social social-instagram social--nobase" href="#" target="_blank" aria-label="instagram">
-                  <i class="ui-instagram"></i>
-                </a>
-              </div>
+<!--              &lt;!&ndash; Socials &ndash;&gt;-->
+<!--              <div class="nav__right-item socials nav__socials d-none d-lg-flex"> -->
+<!--                <a class="social social-facebook social&#45;&#45;nobase" href="#" target="_blank" aria-label="facebook">-->
+<!--                  <i class="ui-facebook"></i>-->
+<!--                </a>-->
+<!--                <a class="social social-twitter social&#45;&#45;nobase" href="#" target="_blank" aria-label="twitter">-->
+<!--                  <i class="ui-twitter"></i>-->
+<!--                </a>-->
+<!--                <a class="social social-google social&#45;&#45;nobase" href="#" target="_blank" aria-label="google">-->
+<!--                  <i class="ui-google"></i>-->
+<!--                </a>-->
+<!--                <a class="social social-youtube social&#45;&#45;nobase" href="#" target="_blank" aria-label="youtube">-->
+<!--                  <i class="ui-youtube"></i>-->
+<!--                </a>-->
+<!--                <a class="social social-instagram social&#45;&#45;nobase" href="#" target="_blank" aria-label="instagram">-->
+<!--                  <i class="ui-instagram"></i>-->
+<!--                </a>-->
+<!--              </div>-->
 
-              <!-- Search -->
-              <div class="nav__right-item nav__search">
-                <a href="#" class="nav__search-trigger" id="nav__search-trigger">
-                  <i class="ui-search nav__search-trigger-icon"></i>
-                </a>
-                <div class="nav__search-box" id="nav__search-box">
-                  <form class="nav__search-form">
-                    <input type="text" placeholder="Search an article" class="nav__search-input">
-                    <button type="submit" class="search-button btn btn-lg btn-color btn-button">
-                      <i class="ui-search nav__search-icon"></i>
-                    </button>
-                  </form>
-                </div>
-                
-              </div>
+<!--              &lt;!&ndash; Search &ndash;&gt;-->
+<!--              <div class="nav__right-item nav__search">-->
+<!--                <a href="#" class="nav__search-trigger" id="nav__search-trigger">-->
+<!--                  <i class="ui-search nav__search-trigger-icon"></i>-->
+<!--                </a>-->
+<!--                <div class="nav__search-box" id="nav__search-box">-->
+<!--                  <form class="nav__search-form">-->
+<!--                    <input type="text" placeholder="Search an article" class="nav__search-input">-->
+<!--                    <button type="submit" class="search-button btn btn-lg btn-color btn-button">-->
+<!--                      <i class="ui-search nav__search-icon"></i>-->
+<!--                    </button>-->
+<!--                  </form>-->
+<!--                </div>-->
+<!--                -->
+<!--              </div>-->
 
-            </div> <!-- end nav right -->  
+<!--            </div> &lt;!&ndash; end nav right &ndash;&gt;  -->
         
           </div> <!-- end flex-parent -->
         </div> <!-- end container -->
