@@ -16,5 +16,7 @@ import org.apache.ibatis.annotations.Param;
 public interface IArtUserService extends IService<ArtUser> {
     public int finRegist(String accountNo,String password,String phone);
     ArtUser findUser(String accountNo,String password);
+    public int finHaveUser(String accountNo);
+
 
 }

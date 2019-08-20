@@ -84,6 +84,9 @@ public class ArtArticle implements Serializable {
      */
     private String status;
 
+    private String userName;
+
+
     public ArtArticle() {
 
     }
@@ -103,10 +106,6 @@ public class ArtArticle implements Serializable {
         this.commentcount = commentcount;
         this.cover = cover;
         this.status = status;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public Integer getId() {
@@ -203,5 +202,13 @@ public class ArtArticle implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

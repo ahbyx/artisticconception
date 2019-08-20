@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.mlgj.artisticconception.mapper.ArtReplyMapper">
-
+    <select id="getAllReplyByCommentId" resultMap="ArtReplyUserInfoResult">
+        select r.commentid,r.id as rid,r.replyContent,r.replyUserid,r.status,r.time,u.address,u.creditscore,u.describe,u.email,u.gender,u.id,u.imgName,u.imgPath,u.qq,u.qq,u.status,u.userid,u.username from art_reply r,art_userinfo u where r.replyUserid=u.id and r.status=0
+    </select>
+    <insert id="reply">
+        insert into art_reply (replyUserid,replyContent,commentid) value(#{replyUserid},#{replyContent},#{commentid})
+    </insert>
+    <resultMap id="ArtReplyUserInfoResult" type="ArtReply">
+        <id property="id" column="rid"/>
+        <association property="artUserinfo" javaType="ArtUserinfo">
+            <id property="id" column="id" />
+        </association>
+    </resultMap>
 </mapper>

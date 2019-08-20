@@ -54,6 +54,10 @@ public class ArtReply implements Serializable {
      */
     private String status;
 
+    private  ArtUserinfo artUserinfo;
+
+
+
     public ArtReply(){
     }
 
@@ -112,5 +116,13 @@ public class ArtReply implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public ArtUserinfo getArtUserinfo() {
+        return artUserinfo;
+    }
+
+    public void setArtUserinfo(ArtUserinfo artUserinfo) {
+        this.artUserinfo = artUserinfo;
     }
 }

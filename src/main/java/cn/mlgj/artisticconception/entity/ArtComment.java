@@ -54,6 +54,8 @@ public class ArtComment implements Serializable {
      */
     private String status;
 
+    private ArtUserinfo artUserinfo;
+
     public ArtComment() {
     }
 
@@ -64,6 +66,14 @@ public class ArtComment implements Serializable {
         this.articleid = articleid;
         this.time = time;
         this.status = status;
+    }
+
+    public ArtUserinfo getArtUserinfo() {
+        return artUserinfo;
+    }
+
+    public void setArtUserinfo(ArtUserinfo artUserinfo) {
+        this.artUserinfo = artUserinfo;
     }
 
     public Integer getId() {

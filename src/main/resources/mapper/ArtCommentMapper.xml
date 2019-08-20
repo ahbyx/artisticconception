@@ -2,4 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.mlgj.artisticconception.mapper.ArtCommentMapper">
 
+    <select id="getCommentCount" resultType="int">
+        select count(1) from art_comment where status=0 and articleid=#{articleid}
+    </select>
+    <select id="getCommentByArticleId" resultMap="ArtCommentUserInfoResult">
+        select c.id as artid,c.articleid,c.content,c.status,c.time,c.userid as artuserid,u.address,u.creditscore,u.describe,u.email,u.gender,u.id,u.imgName,u.imgPath,u.qq,u.qq,u.status,u.userid,u.username from art_comment c,art_userinfo u where c.status=0 and c.articleid=#{articleid} and c.userid=u.userid order by c.time desc
+    </select>
+    <select id="getLastCommentByArticleId" resultMap="ArtCommentUserInfoResult">
+        select c.id as artid,c.articleid,c.content,c.status,c.time,c.userid as artuserid,u.address,u.creditscore,u.describe,u.email,u.gender,u.id,u.imgName,u.imgPath,u.qq,u.qq,u.status,u.userid,u.username from art_comment c,art_userinfo u where c.status=0 and c.articleid=#{articleid} and c.userid=u.userid order by c.time desc limit 0,1
+    </select>
+    <insert id="commentArticle" >
+        insert into art_comment(userid,content,articleid) values (#{userId},#{content},#{articleid})
+    </insert>
+    <resultMap id="ArtCommentUserInfoResult" type="ArtComment">
+        <id property="id" column="artid"/>
+        <result property="userid" column="artuserid"/>
+        <association property="artUserinfo" javaType="ArtUserinfo">
+            <id property="id" column="id" />
+            <result property="userid" column="userid"/>
+        </association>
+    </resultMap>
 </mapper>

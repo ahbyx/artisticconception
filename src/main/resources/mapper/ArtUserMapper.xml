@@ -8,4 +8,8 @@
     <select id="findUser" resultType="ArtUser">
         select * from art_user where accountNo=#{accountNo} and password =#{password} and status=0
     </select>
+
+    <select id="haveUser" resultType="int" parameterType="String">
+    select count(*) from art_user where accountNo=#{accountNo}
+    </select>
 </mapper>

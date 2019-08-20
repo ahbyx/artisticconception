@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.mlgj.artisticconception.mapper.ArtArticleMapper">
-
+    <insert id="publishArticle" >
+        insert  into  art_article(userid,articleContent,title,cover) values (#{userId},#{articleContent},#{title},#{cover})
+    </insert>
+    <select id="findList" resultMap="ArtArticleUserResult">
+        select a.* ,u.accountNo from art_article a,art_user u where a.status=0 and a.userid=u.id order by a.time desc limit #{currPageNo},#{pageSize}
+    </select>
+    <select id="getTotalCount" resultType="int">select count(1) from art_article</select>
+    <select id="getNewestArticle" resultMap="ArtArticleUserResult">
+        select a.* ,u.accountNo from art_article a,art_user u where a.status=0 and a.userid=u.id order by a.time desc  limit 0,5
+    </select>
+    <select id="getHottesttArticle" resultMap="ArtArticleUserResult">
+       select a.* ,u.accountNo from art_article a,art_user u where a.status=0 and a.userid=u.id order by a.praisecount desc  limit 0,5
+    </select>
+    <select id="getBrowseArticle" resultMap="ArtArticleUserResult">
+       select a.* ,u.accountNo from art_article a,art_user u where a.status=0 and a.userid=u.id order by a.browsecount desc  limit 0,5
+    </select>
+    <select id="findById" resultMap="ArtArticleUserResult">
+        select a.* ,u.accountNo from art_article a,art_user u where a.status=0 and a.id=#{id} and a.userid=u.id
+    </select>
+    <select id="getPrevArticle" resultMap="ArtArticleUserResult">
+        select a.* ,u.accountNo from art_article a,art_user u where a.status=0 and a.id=#{id} and a.userid=u.id
+    </select>
+    <select id="getNextArticle" resultMap="ArtArticleUserResult">
+        select a.* ,u.accountNo from art_article a,art_user u where a.status=0 and a.id=#{id} and a.userid=u.id
+    </select>
+    <select id="getFirstArticle" resultMap="ArtArticleUserResult">
+        select a.* ,u.accountNo from art_article a,art_user u where a.status=0  and a.userid=u.id order by a.id limit 0,1
+    </select>
+    <select id="getLastArticle" resultMap="ArtArticleUserResult">
+        select a.* ,u.accountNo from art_article a,art_user u where a.status=0  and a.userid=u.id order by a.id desc limit 0,1
+    </select>
+    <select id="getMinArtcleId" resultType="int">
+        select min(id) from art_article where status=0
+    </select>
+    <select id="getMaxArtcleId" resultType="int">
+        select max(id) from art_article where status=0
+    </select>
+    <select id="findByUserId" resultType="ArtUserinfo">
+        select * from art_userinfo where userid=#{userId} and status=0
+    </select>
+    <update id="fabulousArtcle">
+        update art_article set praisecount=praisecount+1 where id=#{id}
+    </update>
+    <update id="browseArtcle">
+        update art_article set browsecount=browsecount+1 where id=#{id}
+    </update>
+    <resultMap id="ArtArticleUserResult" type="ArtArticle">
+        <id column="id" property="id"/>
+        <result column="accountNo" property="userName"/>
+    </resultMap>
 </mapper>

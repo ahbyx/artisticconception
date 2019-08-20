@@ -29,4 +29,12 @@ public interface ArtUserMapper extends BaseMapper<ArtUser> {
     ArtUser findUser(@Param("accountNo")String accountNo,@Param("password") String password);
 
 
+    /**
+     * 用户名是否重复
+     *
+     * @param accountNo
+     * @return
+     */
+    public int haveUser(@Param("accountNo") String accountNo);
+
 }

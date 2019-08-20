@@ -6,6 +6,9 @@ import cn.mlgj.artisticconception.service.IArtReplyService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -17,4 +20,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ArtReplyServiceImpl extends ServiceImpl<ArtReplyMapper, ArtReply> implements IArtReplyService {
 
+    @Resource
+    ArtReplyMapper artReplyMapper;
+
+    @Override
+    public List<ArtReply> getAllReplyByCommentId() {
+        return artReplyMapper.getAllReplyByCommentId();
+    }
+
+    @Override
+    public int reply(Integer replyUserid, String replyContent, Integer commentid) {
+        return artReplyMapper.reply(replyUserid,replyContent,commentid);
+    }
 }

@@ -32,4 +32,10 @@ public class ArtUserServiceImpl extends ServiceImpl<ArtUserMapper, ArtUser> impl
     public ArtUser findUser(String accountNo, String password) {
         return artUserMapper.findUser(accountNo,password);
     }
+
+    @Override
+    public int finHaveUser(String accountNo) {
+        return artUserMapper.haveUser(accountNo);
+    }
+
 }

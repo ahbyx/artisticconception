@@ -6,12 +6,11 @@
     });
     $("#preBtn").click(function (event) {
         var yes = step.preStep();
-
     });
     $("#xiayibu").click(function (event) {
         var userName = $.trim($("#userName").val());
         var code = $.trim($("#Verification").val());
-        var phone = /[1][3-9][0-9]{9,9}/;
+        var phone = /^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;  //11位手机号
         var phones = $.trim($("#phone").val());
         if (userName == "") {
             Tip('请填写用户名！');
@@ -37,48 +36,62 @@
         return;
     });
     $("#submitBtn").click(function (event) {
-       var txtconfirm = $.trim($("#confirmpwd").val());
+        var txtconfirm = $.trim($("#confirmpwd").val());
         var txtPwd = $("#password").val();
+        var pwd = /^(?!\d+$)(?![A-Za-z]+$)[a-zA-Z0-9]{6,}$/;
 
         if ($.trim(txtPwd) == "") {
             Tips('请输入密码！');
             $("#password").focus();
-            return;
+            return false;
         }
+        if (!pwd.exec(txtPwd))
+            if ($.trim(txtconfirm) == "") {
+                Tips('至少6位并由数字和字母！');
+                $("#password").focus();
+                return false;
+            }
         if ($.trim(txtconfirm) == "") {
-            Tips('请再次输入密码！');
+            Tips("请输入确认密码");
             $("#confirmpwd").focus();
-            return;
+            return false;
         }
         if ($.trim(txtconfirm) != $.trim(txtPwd)) {
             Tips('两次密码不一致，请重新输入！');
             $("#confirmpwd").focus();
-            return;
+            return false;
         }
         var accountNo = $("#userName").val();
         var phone = $("#phone").val();
         var password = $("#password").val();
-        /!*alert(accountNo);*!/
         $.post("zhuce", {accountNo: accountNo, password: password, phone: phone}, function (data) {
             if (data != null) {
-                alert("添加成功");
-
-                /!*   lazyGo();*!/
+                Tips("添加成功");
+                /* lazyGo();*/
             } else {
-                alert("添加失败");
+                Tips("添加失败");
             }
         }, 'json');
 
-
         var yes = step.nextStep();
 
-           });
+    });
+
+    $("#userName").blur(function () {
+        var userName = $("#userName").val();
+        $.post("judgeName", {accountNo: userName}, function (data) {
+            if (data > 0) {
+                alert("用户名已存在！");
+            } else {
+                alert("用户名可用！");
+            }
+        }, 'text');
+
+    });
     $("#goBtn").click(function (event) {
         var yes = step.goStep(3);
     });
-
-
-   function lazyGo() {
+    function lazyGo() {
         var sec = $("#sec").text();
         if (sec > 0) {
             $("#sec").text(--sec);
@@ -87,21 +100,6 @@
         }
         setTimeout(lazyGo(), 5000);
     }
-
-    /*$("#submitBtn").click(function () {
-        var accountNo = $("#userName").val();
-        var phone = $("#phone").val();
-        var password = $("#password").val();
-        /!*alert(accountNo);*!/
-        $.post("zhuce", {accountNo: accountNo, password: password, phone: phone}, function (data) {
-            if (data != null) {
-                alert("添加成功");
-             /!*   lazyGo();*!/
-            } else {
-                alert("添加失败");
-            }
-        }, 'json');
-    });*/
 });
 (function (factory) {
         "use strict";
@@ -118,7 +116,6 @@
             factory((typeof (jQuery) != 'undefined') ? jQuery : window.Zepto);
         }
     }
-
     (function ($) {
         $.fn.step = function (options) {
             var opts = $.extend({}, $.fn.step.defaults, options);
@@ -197,7 +194,6 @@
             }
             return this;
         };
-
         $.fn.step.defaults = {
             animate: true,
             speed: 500,
