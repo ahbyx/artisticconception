@@ -10,6 +10,7 @@
 
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet'>
+  <script src="http://cdn.bootcss.com/ckeditor/4.5.11/ckeditor.js"></script>
 
   <!-- Css -->
   <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
@@ -285,23 +286,29 @@
               <!-- Contact Form -->
               <form id="contact-form" class="contact-form mt-30 mb-30" method="post" action="#">
                 <div class="contact-name">
-                  <label for="name">Name <abbr title="required" class="required">*</abbr></label>
-                  <input name="name" id="name" type="text">
+                  <label for="title">title <abbr title="required" class="required">*</abbr></label>
+                  <input name="title" id="title" type="text">
                 </div>
                 <div class="contact-email">
-                  <label for="email">Email <abbr title="required" class="required">*</abbr></label>
-                  <input name="email" id="email" type="email">
+                  <label for="cover">Cover <abbr title="required" class="required">*</abbr></label>
+                  <input  name="cover" id="cover" type="file">
                 </div>
-                <div class="contact-subject">
+               <!-- <div class="contact-subject">
                   <label for="email">Subject</label>
                   <input name="subject" id="subject" type="text">
-                </div>
+                </div>-->
                 <div class="contact-message">
-                  <label for="message">Message <abbr title="required" class="required">*</abbr></label>
-                  <textarea id="message" name="message" rows="7" required="required"></textarea>
+                  <label for="content">Content <abbr title="required" class="required">*</abbr></label>
+                  <textarea id="content" name="content" rows="7" required="required"></textarea>
                 </div>
+                <script type="text/javascript">
+                  CKEDITOR.replace('content');
+                </script>
 
-                <input type="submit" class="btn btn-lg btn-color btn-button" value="Send Message" id="submit-message">
+
+
+                <input th:if="${session.artUser!=null}" style="margin-top: 20px" type="button" class="btn btn-lg btn-color btn-button" value="发布" id="publish">
+                <input th:if="${session.artUser==null}" style="margin-top: 20px" type="button" class="btn btn-lg btn-color btn-button" value="去登录" id="tologin">
                 <div id="msg" class="message"></div>
               </form>
 
@@ -460,6 +467,7 @@
   <script th:src="@{/js/modernizr.min.js}"></script>
   <script th:src="@{/js/jquery.appear.min.js}"></script>
   <script th:src="@{/js/scripts.js}"></script>
+  <script th:src="@{/js/article/contact.js}"></script>
 
 </body>
 </html>
